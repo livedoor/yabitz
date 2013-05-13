@@ -42,7 +42,10 @@
                 %td.inputfield
                   %select{:name => "status"}
                     - Yabitz::Model::Host::STATUS_LIST.each do |state|
-                      %option{:value => state}= Yabitz::Model::Host.status_title(state)
+                      - if state == "UNDER_DEV"        
+                        %option{:value => state, :selected => true }= Yabitz::Model::Host.status_title(state)
+                      - else
+                        %option{:value => state}= Yabitz::Model::Host.status_title(state)
             %div.cloneable
             %div.hostadd_item.cloneable
               %input.cloneable_number{:type => "hidden", :name => "adding0", :value => 0}
@@ -124,3 +127,7 @@
                 %div{:style => "padding: 0.5em;"} キャンセル
               %button.mainform_commit{:onclick => "return false;"}
                 %div{:style => "padding: 0.5em 3em 0.5em 3em;"} 作成
+- Yabitz::Plugin.get(:host_create_assistant).each do |plugin|
+  - if plugin.respond_to?(:javascript_parts)
+    :javascript
+      #{plugin.javascript_parts}
