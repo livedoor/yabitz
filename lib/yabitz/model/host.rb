@@ -50,7 +50,7 @@ module Yabitz
       CSVFIELDS_S = [:rackunit, :localips, :dnsnames, :hwid]
       CSVFIELDS_M = [:rackunit, :localips, :globalips, :service, :dnsnames, :hwinfo, :hwid, :status]
       CSVFIELDS_L = [:rackunit, :localips, :globalips, :virtualips, :service, :dnsnames, :type, :hwinfo, :cpu, :memory, :disk, :os, :hwid, :status]
-      CSVFIELDS_LL = [:oid, :rackunit, :localips, :globalips, :virtualips, :service, :dnsnames, :type, :hwinfo, :memory, :disk, :os, :hwid, :status, :alert]
+      CSVFIELDS_LL = [:oid, :rackunit, :localips, :globalips, :virtualips, :service, :dnsnames, :type, :hwinfo, :cpu, :memory, :disk, :os, :hwid, :status, :alert]
 
       def json_meta_fields
         if self.localips_by_id.size > 0
