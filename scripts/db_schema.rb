@@ -30,13 +30,13 @@ module Yabitz::Schema
   end
 
   def self.create_database(server, user, pass, db, port, sock, flg=nil)
-    c = Mysql2::Client.new(:host => server, :port => port, :socket => sock, :username => user, :password => pass, :database => db)
+    c = Mysql2::Client.new(:host => server, :port => port, :socket => sock, :username => user, :password => pass)
     c.query("CREATE DATABASE #{db} DEFAULT CHARACTER SET 'utf8'")
     c.close()
   end
 
   def self.drop_database(server, user, pass, db, port, sock, flg=nil)
-    c = Mysql2::Client.new(:host => server, :port => port, :socket => sock, :username => user, :password => pass, :database => db)
+    c = Mysql2::Client.new(:host => server, :port => port, :socket => sock, :username => user, :password => pass)
     c.query("DROP DATABASE IF EXISTS #{db}")
     c.close()
   end

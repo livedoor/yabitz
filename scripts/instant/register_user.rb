@@ -39,7 +39,7 @@ if ARGV[2] == '-p'
 end
 
 def check_username_exists(conn, username)
-  username = conn.escape(conn)
+  username = conn.escape(username)
   result = conn.query("SELECT count(*) FROM #{TABLE_NAME} WHERE name='#{username}'").first['count(*)']
   return result > 0
 end
