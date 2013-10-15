@@ -107,7 +107,7 @@ module Yabitz
       end
 
       def check_badge(str)
-        str =~ /\A\d+\Z/ and str.length < 17
+        str =~ /\A\w+\Z/ and str.length < 17
       end
 
       def self.has_member_source
