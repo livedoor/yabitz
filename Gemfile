@@ -10,4 +10,4 @@ gem 'ruby-ldap'
 gem 'rspec'
 
 gem 'passenger'
-
+gem 'unicorn'
