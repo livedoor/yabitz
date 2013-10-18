@@ -189,6 +189,10 @@ yabitz の動作設定を config プラグインとして作成します。と�
 
     $ RACK_ENV=production bundle exec rackup config.ru
 
+unicorn で起動する場合は、以下のコマンドで localhost:8080 で起動します。
+
+    $ bundle exec unicorn -E production
+
 また mod_passenger で起動したい場合には以下のようにApacheの設定に追加します。(モジュールやRubyのパスは自分の環境にあわせて適当に。)
 
     LoadModule passenger_module /usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.0/ext/apache2/mod_passenger.so
