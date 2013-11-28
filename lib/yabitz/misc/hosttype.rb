@@ -8,37 +8,47 @@ module Yabitz
     VM = :virtualmachine
 
     TYPES = [
-             {
-               :name => 'real',
-               :type => BLICK,
-               :product => 'server',
-             },
-             {
-               :name => 'switch',
-               :type => NETWORK,
-               :product => 'other',
-             },
-             {
-               :name => 'Xen(Dom0)',
-               :type => HV,
-               :product => 'xen',
-             },
-             {
-               :name => 'Xen(DomU)',
-               :type => VM,
-               :product => 'xen',
-             },
-             {
-               :name => 'Jail(Host)',
-               :type => HV,
-               :product => 'bsd',
-             },
-             {
-               :name => 'Jail(Guest)',
-               :type => VM,
-               :product => 'bsd',
-             },
-            ]
+      {
+        :name => 'real',
+        :type => BLICK,
+        :product => 'server',
+      },
+      {
+        :name => 'switch',
+        :type => NETWORK,
+        :product => 'other',
+      },
+      {
+        :name => 'Xen(Dom0)',
+        :type => HV,
+        :product => 'xen',
+      },
+      {
+        :name => 'Xen(DomU)',
+        :type => VM,
+        :product => 'xen',
+      },
+      {
+        :name => 'Jail(Host)',
+        :type => HV,
+        :product => 'bsd',
+      },
+      {
+        :name => 'Jail(Guest)',
+        :type => VM,
+        :product => 'bsd',
+      },
+      {
+        :name => 'VMware(ESXi)',
+        :type => HV,
+        :product => 'vmware',
+      },
+      {
+        :name => 'VMware(Guest)',
+        :type => VM,
+        :product => 'vmware',
+      },
+    ]
 
     def self.names
       TYPES.map{|t| t[:name]}
