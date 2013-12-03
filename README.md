@@ -47,12 +47,10 @@
 動作環境は以下の通りです。
 
 * サーバ環境
-    * Ruby 1.9.2 (1.9.1以前および1.8系では動作しません)
+    * Ruby 1.9.2 以降 (1.9.1以前および1.8系では動作しません)
         * sinatra, haml/sass, ruby-ldap, ruby-mysql, rspec
-        * stratum (see https://github.com/tagomoris/Stratum )
     * MySQL 5.1.x
-        * 5.0でも動作はすると思いますが、未確認です
-        * 5.5ではおそらく動作しません (ruby-mysqlのバグ？ そのうち mysql2 に移行予定)
+        * 5.0/5.5/5.6 でも動作はすると思いますが、未確認です
     * 適当な Linux もしくは Mac OS X (Windowsでは動作しません)
 * クライアント環境
     * モダンなブラウザ (Chrome, Safari, Firefox ...)
@@ -70,8 +68,8 @@
 
 適当なLinuxサーバで以下のものをインストールします。
 
-* Ruby 1.9.2
-* MySQL 5.1.x
+* Ruby 1.9.x or 2.x
+* MySQL 5.x
 
 MySQLにおける認証設定は適宜行ってください。
 
