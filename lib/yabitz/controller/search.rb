@@ -8,7 +8,7 @@ class Yabitz::Application < Sinatra::Base
   ### detailed search ###
   get %r!/ybz/search(\.json|\.csv)?! do |ctype|
     authorized?
-    
+
     @page_title = "ホスト検索"
     @hosts = nil
     andor = 'AND'
@@ -32,7 +32,7 @@ class Yabitz::Application < Sinatra::Base
       @hosts = Yabitz::DetailSearch.search_with_status(andor, conditions, ex_andor, ex_conditions, cond_status)
     end
 
-    Stratum.preload(@hosts, Yabitz::Model::Host) if @hosts;
+    Stratum.preload(@hosts, Yabitz::Model::Host) if @hosts
     case ctype
     when '.json'
       response['Content-Type'] = 'application/json'
