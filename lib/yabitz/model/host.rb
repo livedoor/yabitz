@@ -30,7 +30,7 @@ module Yabitz
       field :parent, :ref, :model => 'Yabitz::Model::Host', :empty => :ok, :manualmaint => true, :serialize => :full
       field :children, :reflist, :model => 'Yabitz::Model::Host', :empty => :ok, :serialize => :meta
       field :rackunit, :ref, :model => 'Yabitz::Model::RackUnit', :empty => :ok
-      field :hwid, :string, :length => 16, :empty => :ok
+      field :hwid, :string, :length => 64, :empty => :ok
       field :hwinfo, :ref, :model => 'Yabitz::Model::HwInformation', :empty => :ok
       field :cpu, :string, :validator => 'check_cpu', :normalizer => 'normalize_cpu', :empty => :ok
       fieldex :cpu, "CPU数[SPACE]モデル名等 / 例: '4 Intel Xeon L5630 @ 2.13GHz'"

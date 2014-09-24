@@ -22,7 +22,7 @@ module Yabitz
       STATUS_ORDER_MAP = {STATUS_STOCK => 0, STATUS_REPAIR => 1, STATUS_SPARE => 2, STATUS_BROKEN => 3, STATUS_IN_USE => 4}
 
       table :bricks
-      field :hwid, :string, :length => 16
+      field :hwid, :string, :length => 64
       field :productname, :string, :length => 64
       field :delivered, :string, :validator => 'check_delivered', :normalizer => 'normalize_delivered'
       fieldex :delivered, "例: 2011-07-05"
