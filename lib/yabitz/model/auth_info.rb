@@ -33,22 +33,29 @@ module Yabitz
           fullname = handler.authenticate(username, password, sourceip)
           break if fullname
         end
-                       
-        user = self.query(:name => username, :unique => true)
-        if fullname and user.nil?
-          pre_operator = begin
-                           Stratum.current_operator()
-                         rescue RuntimeError
-                           # ignore
-                           nil
-                         end
-          Stratum.current_operator(self.get_root)
-          user = self.new
-          user.name = username
-          user.fullname = fullname
-          user.priv = nil # TODO auto admin-nize to NSG user?
-          user.save
-          Stratum.current_operator(pre_operator) if pre_operator
+
+        user = nil
+        Stratum.transaction do |conn|
+          user = self.query(:name => username, :unique => true)
+          if fullname and user.nil?
+            pre_operator = begin
+                             Stratum.current_operator()
+                           rescue RuntimeError
+                             # ignore
+                             nil
+                           end
+            Stratum.current_operator(self.get_root)
+            user = self.new
+            user.name = username
+            user.fullname = fullname
+            user.priv = nil # TODO auto admin-nize to NSG user?
+            user.save
+            Stratum.current_operator(pre_operator) if pre_operator
+            if self.query(:name => username).size != 1
+              # new user registration executed twice concurrently
+              raise "Transaction Error: login twice?" # rollback
+            end
+          end
         end
 
         result = if user and fullname
